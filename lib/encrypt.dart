@@ -8,6 +8,7 @@ import "package:asn1lib/asn1lib.dart";
 import "package:clock/clock.dart";
 import "package:collection/collection.dart";
 import "package:crypto/crypto.dart" hide Digest;
+import "package:meta/meta.dart";
 import "package:pointycastle/export.dart" hide RSASigner, Signer;
 
 part "src/utils.dart";

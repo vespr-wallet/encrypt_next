@@ -1,9 +1,10 @@
 part of "../encrypt.dart";
 
 /// Represents an encripted value.
+@immutable
 class Encrypted {
   /// Creates an Encrypted object from a Uint8List.
-  Encrypted(this._bytes);
+  const Encrypted(this._bytes);
 
   final Uint8List _bytes;
 
@@ -58,7 +59,7 @@ class Encrypted {
 /// Represents an Initialization Vector.
 class IV extends Encrypted {
   /// Creates an Initialization Vector object from a Uint8List.
-  IV(super.bytes);
+  const IV(super.bytes);
 
   /// Creates an Initialization Vector object from a hexdecimal string.
   IV.fromBase16(super.encoded) : super.fromBase16();
@@ -87,7 +88,7 @@ class IV extends Encrypted {
 /// Represents an Encryption Key.
 class Key extends Encrypted {
   /// Creates an Encryption Key object from a Uint8List.
-  Key(super.bytes);
+  const Key(super.bytes);
 
   /// Creates an Encryption Key object from a hexdecimal string.
   Key.fromBase16(super.encoded) : super.fromBase16();

@@ -1,7 +1,7 @@
 part of "../encrypt.dart";
 
 Uint8List decodeHexString(String input) {
-  assert(input.length % 2 == 0, "Input needs to be an even length.");
+  assert(input.length.isEven, "Input needs to be an even length.");
 
   return Uint8List.fromList(
     List.generate(

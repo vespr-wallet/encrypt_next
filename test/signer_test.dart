@@ -1,15 +1,13 @@
 import "package:encrypt_plus/encrypt.dart";
 import "package:encrypt_plus/encrypt_io.dart";
-import "package:pointycastle/export.dart" hide Signer hide RSASigner;
+import "package:pointycastle/export.dart" hide RSASigner, Signer;
 import "package:test/test.dart";
 
 void main() {
   test("Signer", () async {
     final publicKey = await parseKeyFromFile<RSAPublicKey>("test/public.pem");
-    final privateKey =
-        await parseKeyFromFile<RSAPrivateKey>("test/private.pem");
-    final signer = Signer(RSASigner(RSASignDigest.SHA256,
-        publicKey: publicKey, privateKey: privateKey));
+    final privateKey = await parseKeyFromFile<RSAPrivateKey>("test/private.pem");
+    final signer = Signer(RSASigner(RSASignDigest.SHA256, publicKey: publicKey, privateKey: privateKey));
 
     const message = "hello world";
     const digest =
@@ -19,10 +17,7 @@ void main() {
 
     expect(signer.sign(message).base64, equals(digest));
     expect(signer.verify(message, Encrypted.from64(digest)), isTrue);
-    expect(
-        signer.verify(message,
-            Encrypted.from64("eW91J3JlIHZlcnkgY3VyaW91cywgYXJlbid0IHlvdT8=")),
-        isFalse);
+    expect(signer.verify(message, Encrypted.from64("eW91J3JlIHZlcnkgY3VyaW91cywgYXJlbid0IHlvdT8=")), isFalse);
     expect(signer.verify("test", Encrypted.from64(externalDigest)), isTrue);
   });
 }
