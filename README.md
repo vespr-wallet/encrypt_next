@@ -1,11 +1,9 @@
-> [!CAUTION]
-> I'm not being able to properly maintain this package, so it is being archived. Feel free to use some fork as an alternative.
+# encrypt_next
 
-# encrypt
+> **Note**: This package is a maintained fork of the original [`encrypt`](https://pub.dev/packages/encrypt) package, which has been [archived](https://github.com/leocavalcante/encrypt). This fork continues to receive updates and maintenance.
 
-[![Pub Package](https://img.shields.io/pub/v/encrypt.svg)](https://pub.dartlang.org/packages/encrypt)
-[![Dart CI](https://github.com/leocavalcante/encrypt/actions/workflows/dart.yaml/badge.svg)](https://github.com/leocavalcante/encrypt/actions/workflows/dart.yaml)
-[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E4F45BFVMFVQW)
+[![Pub Package](https://img.shields.io/pub/v/encrypt_next.svg)](https://pub.dartlang.org/packages/encrypt_next)
+[![Dart CI](https://github.com/vespr-wallet/encrypt_next/actions/workflows/dart.yaml/badge.svg)](https://github.com/vespr-wallet/encrypt_next/actions/workflows/dart.yaml)
 
 A set of high-level APIs over PointyCastle for two-way cryptography.
 
@@ -13,12 +11,12 @@ A set of high-level APIs over PointyCastle for two-way cryptography.
 
 ### Secure random
 
-You can generate cryptographically secure random keys and IVs for you project.
+You can generate cryptographically secure random keys and IVs for your project.
 
-Activate the encrypt package:
+Activate the encrypt_next package:
 
 ```bash
-pub global activate encrypt
+pub global activate encrypt_next
 ```
 
 Then use the `secure-random` command-line tool:
@@ -60,7 +58,7 @@ Current status is:
 #### AES
 
 ```dart
-import 'package:encrypt/encrypt.dart';
+import 'package:encrypt_next/encrypt.dart';
 
 void main() {
   final plainText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit';
@@ -106,7 +104,7 @@ final encrypter = Encrypter(AES(key, mode: AESMode.cbc, padding: null));
 #### Salsa20
 
 ```dart
-import 'package:encrypt/encrypt.dart';
+import 'package:encrypt_next/encrypt.dart';
 
 void main() {
   final plainText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit';
@@ -125,7 +123,7 @@ void main() {
 #### [Fernet](https://github.com/fernet/spec/blob/master/Spec.md)
 
 ```dart
-import 'package:encrypt/encrypt.dart';
+import 'package:encrypt_next/encrypt.dart';
 import 'dart:convert';
 
 void main() {
@@ -152,7 +150,7 @@ void main() {
 
 ```dart
 import 'dart:io';
-import 'package:encrypt/encrypt.dart';
+import 'package:encrypt_next/encrypt.dart';
 import 'package:pointycastle/asymmetric/api.dart';
 
 void main() {
