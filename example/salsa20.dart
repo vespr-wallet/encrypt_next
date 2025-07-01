@@ -1,3 +1,4 @@
+// ignore_for_file: avoid_print
 import "package:encrypt_plus/encrypt.dart";
 
 void main() {
