@@ -3,7 +3,7 @@
 import "dart:convert";
 import "dart:typed_data";
 
-import "package:encrypt_plus/encrypt.dart";
+import "package:encrypt_next/encrypt.dart";
 
 void main() {
   const plainText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit";

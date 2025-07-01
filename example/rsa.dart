@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_print
-import "package:encrypt_plus/encrypt.dart";
-import "package:encrypt_plus/encrypt_io.dart";
+import "package:encrypt_next/encrypt.dart";
+import "package:encrypt_next/encrypt_io.dart";
 import "package:pointycastle/asymmetric/api.dart";
 
 void main() async {

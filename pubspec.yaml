@@ -1,7 +1,7 @@
-name: encrypt_plus
+name: encrypt_next
 version: 5.0.5
 description: A set of high-level APIs over PointyCastle for two-way cryptography.
-repository: https://github.com/vespr-wallet/encrypt_plus
+repository: https://github.com/vespr-wallet/encrypt_next
 
 executables:
   secure-random:
