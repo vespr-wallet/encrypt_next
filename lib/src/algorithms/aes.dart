@@ -1,4 +1,4 @@
-part of encrypt;
+part of "../../encrypt.dart";
 
 /// Wraps the AES Algorithm.
 class AES implements Algorithm {
@@ -8,31 +8,28 @@ class AES implements Algorithm {
   late final BlockCipher _cipher;
   final StreamCipher? _streamCipher;
 
-  AES(this.key, {this.mode = AESMode.sic, this.padding = 'PKCS7'})
-      : _streamCipher = padding == null && _streamable.contains(mode)
-            ? StreamCipher('AES/${_modes[mode]}')
-            : null {
+  AES(this.key, {this.mode = AESMode.sic, this.padding = "PKCS7"})
+      : _streamCipher = padding == null && _streamable.contains(mode) ? StreamCipher("AES/${_modes[mode]}") : null {
     if (mode == AESMode.gcm) {
       _cipher = GCMBlockCipher(AESEngine());
     } else {
-      _cipher = padding != null
-          ? PaddedBlockCipher('AES/${_modes[mode]}/$padding')
-          : BlockCipher('AES/${_modes[mode]}');
+      _cipher =
+          padding != null ? PaddedBlockCipher("AES/${_modes[mode]}/$padding") : BlockCipher("AES/${_modes[mode]}");
     }
   }
 
   @override
   Encrypted encrypt(Uint8List bytes, {IV? iv, Uint8List? associatedData}) {
     if (mode != AESMode.ecb && iv == null) {
-      throw StateError('IV is required.');
+      throw StateError("IV is required.");
     }
 
     if (_streamCipher != null) {
-      _streamCipher!
+      _streamCipher
         ..reset()
         ..init(true, _buildParams(iv, associatedData: associatedData));
 
-      return Encrypted(_streamCipher!.process(bytes));
+      return Encrypted(_streamCipher.process(bytes));
     }
 
     _cipher
@@ -49,15 +46,15 @@ class AES implements Algorithm {
   @override
   Uint8List decrypt(Encrypted encrypted, {IV? iv, Uint8List? associatedData}) {
     if (mode != AESMode.ecb && iv == null) {
-      throw StateError('IV is required.');
+      throw StateError("IV is required.");
     }
 
     if (_streamCipher != null) {
-      _streamCipher!
+      _streamCipher
         ..reset()
         ..init(false, _buildParams(iv, associatedData: associatedData));
 
-      return _streamCipher!.process(encrypted.bytes);
+      return _streamCipher.process(encrypted.bytes);
     }
 
     _cipher
@@ -72,7 +69,7 @@ class AES implements Algorithm {
   }
 
   Uint8List _processBlocks(Uint8List input) {
-    var output = Uint8List(input.lengthInBytes);
+    final output = Uint8List(input.lengthInBytes);
 
     for (int offset = 0; offset < input.lengthInBytes;) {
       offset += _cipher.processBlock(input, offset, output, offset);
@@ -111,9 +108,7 @@ class AES implements Algorithm {
       return PaddedBlockCipherParameters(KeyParameter(key.bytes), null);
     }
 
-    return PaddedBlockCipherParameters(
-        ParametersWithIV<KeyParameter>(KeyParameter(key.bytes), iv.bytes),
-        null);
+    return PaddedBlockCipherParameters(ParametersWithIV<KeyParameter>(KeyParameter(key.bytes), iv.bytes), null);
   }
 }
 
@@ -129,14 +124,14 @@ enum AESMode {
 }
 
 const Map<AESMode, String> _modes = {
-  AESMode.cbc: 'CBC',
-  AESMode.cfb64: 'CFB-64',
-  AESMode.ctr: 'CTR',
-  AESMode.ecb: 'ECB',
-  AESMode.ofb64Gctr: 'OFB-64/GCTR',
-  AESMode.ofb64: 'OFB-64',
-  AESMode.sic: 'SIC',
-  AESMode.gcm: 'GCM',
+  AESMode.cbc: "CBC",
+  AESMode.cfb64: "CFB-64",
+  AESMode.ctr: "CTR",
+  AESMode.ecb: "ECB",
+  AESMode.ofb64Gctr: "OFB-64/GCTR",
+  AESMode.ofb64: "OFB-64",
+  AESMode.sic: "SIC",
+  AESMode.gcm: "GCM",
 };
 
 const List<AESMode> _streamable = [

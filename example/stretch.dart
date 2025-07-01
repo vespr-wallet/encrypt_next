@@ -1,10 +1,10 @@
-import 'dart:typed_data';
+import "dart:typed_data";
 
-import 'package:encrypt/encrypt.dart';
+import "package:encrypt_plus/encrypt.dart";
 
 void main() {
   final salt = Uint8List(16);
-  final key = Key.fromUtf8('short').stretch(32, salt: salt);
+  final key = Key.fromUtf8("short").stretch(32, salt: salt);
 
   print(key.base64);
 }

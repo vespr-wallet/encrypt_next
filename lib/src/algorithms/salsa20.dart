@@ -1,4 +1,4 @@
-part of encrypt;
+part of "../../encrypt.dart";
 
 /// Wraps the Salsa20 Engine.
 class Salsa20 implements Algorithm {
@@ -11,7 +11,7 @@ class Salsa20 implements Algorithm {
   @override
   Encrypted encrypt(Uint8List bytes, {IV? iv, Uint8List? associatedData}) {
     if (iv == null) {
-      throw StateError('IV is required.');
+      throw StateError("IV is required.");
     }
 
     _cipher
@@ -24,7 +24,7 @@ class Salsa20 implements Algorithm {
   @override
   Uint8List decrypt(Encrypted encrypted, {IV? iv, Uint8List? associatedData}) {
     if (iv == null) {
-      throw StateError('IV is required.');
+      throw StateError("IV is required.");
     }
 
     _cipher

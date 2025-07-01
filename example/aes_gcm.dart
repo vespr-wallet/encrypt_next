@@ -1,11 +1,11 @@
-import 'dart:convert';
-import 'dart:typed_data';
+import "dart:convert";
+import "dart:typed_data";
 
-import 'package:encrypt/encrypt.dart';
+import "package:encrypt_plus/encrypt.dart";
 
 void main() {
-  final plainText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit';
-  final messageAuthenticationCode = 'flutter is awesome';
+  const plainText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit";
+  const messageAuthenticationCode = "flutter is awesome";
 
   final key = Key.fromSecureRandom(32);
   final iv = IV.fromSecureRandom(16);

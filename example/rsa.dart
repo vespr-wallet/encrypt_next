@@ -1,11 +1,11 @@
-import 'package:encrypt/encrypt.dart';
-import 'package:encrypt/encrypt_io.dart';
-import 'package:pointycastle/asymmetric/api.dart';
+import "package:encrypt_plus/encrypt.dart";
+import "package:encrypt_plus/encrypt_io.dart";
+import "package:pointycastle/asymmetric/api.dart";
 
 void main() async {
-  final publicKey = await parseKeyFromFile<RSAPublicKey>('test/public.pem');
-  final privKey = await parseKeyFromFile<RSAPrivateKey>('test/private.pem');
-  final plainText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit';
+  final publicKey = await parseKeyFromFile<RSAPublicKey>("test/public.pem");
+  final privKey = await parseKeyFromFile<RSAPrivateKey>("test/private.pem");
+  const plainText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit";
   Encrypter encrypter;
   Encrypted encrypted;
   String decrypted;
@@ -15,7 +15,7 @@ void main() async {
   encrypted = encrypter.encrypt(plainText);
   decrypted = encrypter.decrypt(encrypted);
 
-  print('PKCS1 (Default)');
+  print("PKCS1 (Default)");
   print(decrypted);
   print(encrypted.bytes);
   print(encrypted.base16);
@@ -28,7 +28,7 @@ void main() async {
   encrypted = encrypter.encrypt(plainText);
   decrypted = encrypter.decrypt(encrypted);
 
-  print('\nOAEP (SHA1)');
+  print("\nOAEP (SHA1)");
   print(decrypted);
   print(encrypted.bytes);
   print(encrypted.base16);
@@ -46,7 +46,7 @@ void main() async {
   encrypted = encrypter.encrypt(plainText);
   decrypted = encrypter.decrypt(encrypted);
 
-  print('\nOAEP (SHA256)');
+  print("\nOAEP (SHA256)");
   print(decrypted);
   print(encrypted.bytes);
   print(encrypted.base16);

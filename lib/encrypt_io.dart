@@ -1,7 +1,8 @@
-import 'dart:io';
+import "dart:io";
 
-import 'package:encrypt_plus/encrypt.dart';
-import 'package:pointycastle/asymmetric/api.dart';
+import "package:pointycastle/asymmetric/api.dart";
+
+import "encrypt.dart";
 
 Future<T> parseKeyFromFile<T extends RSAAsymmetricKey>(String filename) async {
   final file = File(filename);
